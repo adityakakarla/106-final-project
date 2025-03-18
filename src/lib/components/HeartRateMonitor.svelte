@@ -23,6 +23,20 @@
         'S10': 106
     } as const;
     
+    // Student grades data
+    const studentGrades = {
+        'S1': 91,
+        'S2': 90,
+        'S3': 94,
+        'S4': 75,
+        'S5': 79,
+        'S6': 88,
+        'S7': 55,
+        'S8': 92,
+        'S9': 63,
+        'S10': 58
+    } as const;
+    
     // Handle student selection
     function handleStudentChange(event: Event) {
         const select = event.target as HTMLSelectElement;
@@ -213,8 +227,10 @@
                             on:change={handleStudentChange}
                         >
                             <option value="">Select Student</option>
-                            {#each Object.entries(studentData) as [student, rate]}
-                                <option value={student}>{student} ({rate} BPM)</option>
+                            {#each Object.entries(studentData)
+                                .sort((a, b) => studentGrades[b[0] as keyof typeof studentGrades] - studentGrades[a[0] as keyof typeof studentGrades]) 
+                                as [student, rate]}
+                                <option value={student}>{student} ({rate} BPM, Grade: {studentGrades[student as keyof typeof studentGrades]})</option>
                             {/each}
                         </select>
                         <button class="settings-btn" on:click={toggleSettings}>
