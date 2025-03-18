@@ -1,0 +1,13 @@
+import { createClient } from "@supabase/supabase-js";
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLIC_ANON_KEY } from "$env/static/public";
+
+export const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLIC_ANON_KEY);
+
+export async function heartRateData(supabase: any) {
+    const { data, error } = await supabase
+    .from('hr_data')
+    .select('*')
+
+    return { data, error }
+    
+}
