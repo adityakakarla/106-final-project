@@ -1,7 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
-import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLIC_ANON_KEY } from "$env/static/public";
 
-export const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLIC_ANON_KEY);
+export const supabase = createClient('https://bfxambqrjjzxwfhopnre.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmeGFtYnFyamp6eHdmaG9wbnJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIyNTE0ODMsImV4cCI6MjA1NzgyNzQ4M30.CLS6ecIWuoOscVx1Ged_cwtwqruvyzs9mnyZauBSVgA');
 
 export async function heartRateData(supabase: any) {
     const { data, error } = await supabase
